@@ -16,8 +16,8 @@ body {
 }
 #first-paragraph, #second-paragraph {
   float: left;
-  width: 48%;
-  padding: 1%;
+  width: 49%;
+  padding: 2%;
   text-align: center;
 }
 /*#second-paragraph {*/
