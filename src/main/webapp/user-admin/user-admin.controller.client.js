@@ -23,15 +23,38 @@ const init = () => {
   //jQuery('h1').css('backgroundColor', 'blue')
   //let $ul = $('<ul>')
   //for(let i = 0; i < users.length; i++) {
+  renderUsers(users)
+}
+
+function renderUsers(users) {
+  //var $newRow = $userRowTemplate.clone(withDataAndEvents=true);
+  $('tr.wbdv-added').remove();
   for (let u of users) {
     //$ul.append($('<li>' + u.username + '</li>'));
-
     let $newRow = $('.wbdv-template').clone()
-    $newRow.removeClass('wbdv-template')
+    //let $newRow = $userRowTemplate.clone()
+    $newRow.removeClass('wbdv-template').removeClass('wbdv-hidden').addClass('wbdv-added')
+    $newRow.attr('wbdv-username', u.username)
     $newRow.find('.wbdv-username').html(u.username)
     $newRow.find('.wbdv-first-name').html(u.firstname)
     $('tbody').append($newRow)
   }
   //$('div.container').append($ul)
+  $('.wbdv-remove').click((evt) => deleteUser2(evt, users))
 }
+
+function deleteUser2(evt, users) {
+  // determine which user was clicked
+  const uname = $(evt.currentTarget).parents('tr.wbdv-user').attr('wbdv-username')
+  // remove that user from array
+  users = users.filter(u => u.username !== uname);
+  renderUsers(users)
+}
+
+function deleteUser(evt) {
+  //console.log(evt)
+  $(evt.currentTarget).parents('tr.wbdv-user').remove()
+  //console.log('delete clicked')
+}
+
 $(init)
