@@ -23,7 +23,12 @@ const init = () => {
   //jQuery('h1').css('backgroundColor', 'blue')
   //let $ul = $('<ul>')
   //for(let i = 0; i < users.length; i++) {
-  renderUsers(users)
+  $('.wbdv-create').click(() => {
+    console.log($('#usernameFld').val())
+    $('#usernameFld').val('')
+  })
+  $.get('https://wbdv-generic-server.herokuapp.com/api/jannunzi/users',
+     renderUsers)
 }
 
 function renderUsers(users) {
@@ -34,9 +39,9 @@ function renderUsers(users) {
     let $newRow = $('.wbdv-template').clone()
     //let $newRow = $userRowTemplate.clone()
     $newRow.removeClass('wbdv-template').removeClass('wbdv-hidden').addClass('wbdv-added')
-    $newRow.attr('wbdv-username', u.username)
+    $newRow.attr('wbdv-username', u._id)
     $newRow.find('.wbdv-username').html(u.username)
-    $newRow.find('.wbdv-first-name').html(u.firstname)
+    $newRow.find('.wbdv-first-name').html(u.first)
     $('tbody').append($newRow)
   }
   //$('div.container').append($ul)
