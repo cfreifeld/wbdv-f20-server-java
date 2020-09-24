@@ -10,7 +10,7 @@ function addBtnHandler() {
   var titleStr = titleFld.val();
   var descriptionStr = descriptionFld.val();
   var id = (new Date()).getTime();
-  var span = $('<span class="btn btn-small btn-danger">X<span>').click(deleteNote);
+  var span = $('<span title="Delete" class="btn btn-small btn-danger">X<span>').click(deleteNote);
   var note = $("<li>").append(titleStr).append(span);
   todosUl.append(note);
 }
