@@ -29,7 +29,7 @@ const init = () => {
     $('#usernameFld').val('')
   })
   // TODO: Use the findAllUsers function instead
-  $.get('https://wbdv-generic-server.herokuapp.com/api/jannunzi/users',
+  $.get('https://wbdv-generic-server.herokuapp.com/api/ccf/users',
      renderUsers)
 }
 function renderUsers(users) {
