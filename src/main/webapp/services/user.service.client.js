@@ -1,18 +1,14 @@
-function AdminUserServiceClient() {
-  //this.createUser = createUser;
-  this.findAllUsers = findAllUsers;
-  //this.findUserById = findUserById;
-  //this.deleteUser = deleteUser;
-  //this.updateUser = updateUser;
-  this.url = 'https://wbdv-generic-server.herokuapp.com/api/ccf/users';
-  var self = this;
-  //function createUser(user) { … }
-  function findAllUsers(cb) {
+class AdminUserServiceClient {
+  constructor() {
+    this.url = 'https://wbdv-generic-server.herokuapp.com/api/ccf/users';
+  }
+  //createUser(user) { … }
+  findAllUsers(cb) {
     fetch(this.url).then(response => response.json())
         .then(users => cb(users))
     //$.get(this.url, cb)
   }
-  //function findUserById(userId) { … }
-  //function updateUser(userId, user) { … }
-  //function deleteUser(userId) { … }
+  // findUserById(userId) { … }
+  // updateUser(userId, user) { … }
+  // deleteUser(userId) { … }
 }
