@@ -1,12 +1,21 @@
-package com.example.wbdvf20serverjava.services;
+package com.example.wbdvf20serverjava.models;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Data object representing a message in a chat application.
  */
-// POJO "plain old java object"
+@Entity
+@Table(name="messages")
 public class Message {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
   private String text;
   private Date date;
 

@@ -1,9 +1,12 @@
 package com.example.wbdvf20serverjava.services;
 
+import com.example.wbdvf20serverjava.models.Message;
+import com.example.wbdvf20serverjava.models.MessageRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 //@CrossOrigin()
 public class HelloWorldService {
   List<Message> messages = new ArrayList<>();
+
+  @Autowired
+  private MessageRepository repository;
 
   @GetMapping("/hello")    // this is a "route"
   public String hello() {
@@ -34,6 +40,7 @@ public class HelloWorldService {
   //@CrossOrigin(origins = "*")
   public List<Message> getMessages() {
     return messages;
+    //return repository.findAll();
   }
 
   @PostMapping("/api/messages")
