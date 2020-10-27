@@ -24,7 +24,7 @@ public class Message {
   private String text;
   private Date date;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.PERSIST)
   private User user;
 
   public Message() {

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,6 +69,13 @@ public class HelloWorldService {
     }
     messageRepository.save(newMessage);
     return newMessage;
+  }
+
+  @DeleteMapping("/api/messages/{messageId}")
+  public Integer deleteMessage(@PathVariable("messageId") Integer messageId) {
+    //messageRepository.delete(messageId);
+    messageRepository.deleteById(messageId);
+    return messageId;
   }
 
   @GetMapping("/api/users")
