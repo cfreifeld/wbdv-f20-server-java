@@ -1,5 +1,6 @@
 package com.example.wbdvf20serverjava.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -7,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -25,7 +25,6 @@ public class Message {
   private Date date;
 
   @ManyToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name="user_id")
   private User user;
 
   public Message() {
@@ -67,11 +66,8 @@ public class Message {
     this.user = u;
   }
 
-//  public User getUser() {
-//    return user;
-//  }
-//
-//  public Integer getUsersId() {
-//    return usersId;
-//  }
+  public User getUser() {
+    return user;
+  }
+
 }

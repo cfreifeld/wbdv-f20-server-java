@@ -62,6 +62,10 @@ public class HelloWorldService {
   public @ResponseBody Message createMessage(@RequestBody Message newMessage) {
     newMessage.setDate(new Date());
     //messages.add(newMessage);
+    User u = userRepository.findUserById(newMessage.getUser().getId());
+    if (u != null) {
+      newMessage.setUser(u);
+    }
     messageRepository.save(newMessage);
     return newMessage;
   }
